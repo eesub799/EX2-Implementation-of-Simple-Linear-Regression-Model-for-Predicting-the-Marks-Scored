@@ -19,12 +19,44 @@ To implement simple linear regression using sklearn.
 ```
 /*
 Program to implement univariate Linear Regression to fit a straight line using least squares.
-Developed by: 
-RegisterNumber:  
+Developed by: SHAIK EESUB
+RegisterNumber: 2305002021
 */
+```import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+df=pd.read_csv('/content/ex1.csv')
+df.head(10)
+plt.scatter(df['X'],df['Y'])
+plt.xlabel('X')
+plt.ylabel('Y')
+x=df.iloc[:,0:1]
+y=df.iloc[:,-1]
+x
+from sklearn.model_selection import train_test_split
+x_train,X_test,Y_train,Y_test=train_test_split(x,y,test_size=0.2,random_state=0)
+from sklearn.linear_model import LinearRegression
+lr=LinearRegression()
+lr.fit(x_train,Y_train)
+plt.scatter(df['X'],df['Y'])
+plt.xlabel('X')
+plt.ylabel('Y')
+plt.plot(x_train,lr.predict(x_train),color='red')
+m=lr.coef_
+m
+b=lr.intercept_
+b
+pred=lr.predict(X_test)
+pred
+X_test
+Y_test
+from sklearn.metrics import mean_squared_error
+mse=mean_squared_error(Y_test, pred)
+print(f'Mean Squared Error (MSE): {mse}')
 ```
 
 ## Output:
+![E2](https://github.com/user-attachments/assets/3aeaa05b-376a-4802-9367-d50ce0cd1097)
 
 
 
